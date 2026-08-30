@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- DRAFT: remove this line before going live so search engines can index the site -->
+<meta name="robots" content="noindex, nofollow">
+<title>Silver Linings Massage | Omaha, NE</title>
+<meta name="description" content="Silver Linings Massage — personalized therapeutic massage and craniosacral therapy with Liz Smith, LMT, in Omaha, Nebraska.">
+<meta name="theme-color" content="#f4eee7">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Silver Linings Massage">
+<meta property="og:description" content="Personalized massage therapy for real relief. Omaha, NE.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://silverliningsmassage.square.site/">
+
+<!-- Favicon: the logo ring mark, inline so the file stays self-contained -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4eee7'/%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%239a8a78' stroke-width='1.4'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%239a8a78' stroke-width='0.8'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-size='13' fill='%232f333b'%3ESL%3C/text%3E%3C/svg%3E">
+
+<!-- Optional web font for headings; degrades to Georgia/serif offline -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#f4eee7;
+    --cream-deep:#ece3d8;
+    --cream-card:#faf6f1;
+    --charcoal:#2f333b;
+    --taupe:#9a8a78;
+    --taupe-deep:#6f6151;
+    --taupe-light:#b6a894;
+    --body:#4a4a4a;
+    --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --maxw:960px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:64px;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img,svg,iframe{max-width:100%;}
+  a{color:var(--charcoal);}
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    color:var(--charcoal);
+    font-weight:500;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    line-height:1.2;
+    margin:0;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  section{padding:58px 0;}
+  @media(min-width:760px){ section{padding:90px 0;} }
+  .bg-deep{background:var(--cream-deep);}
+  .narrow{max-width:620px;margin:0 auto;}
+
+  /* ---------- Double-line divider ---------- */
+  .rule{
+    width:64px;height:0;margin:18px auto 30px;
+    border-top:1px solid var(--taupe);
+    position:relative;
+  }
+  .rule::after{
+    content:"";position:absolute;left:0;right:0;top:3px;
+    border-top:1px solid var(--taupe);
+  }
+  .rule .diamond{
+    position:absolute;left:50%;top:1px;width:6px;height:6px;
+    background:var(--taupe);transform:translate(-50%,-50%) rotate(45deg);
+  }
+
+  .section-head{text-align:center;margin-bottom:8px;}
+  .section-head h2{font-size:1.9rem;}
+  @media(min-width:760px){ .section-head h2{font-size:2.3rem;} }
+
+  /* ---------- Sticky mini header ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+    padding:12px 22px;
+    background:rgba(244,238,231,.92);
+    backdrop-filter:saturate(120%) blur(6px);
+    border-bottom:1px solid rgba(154,138,120,.3);
+  }
+  .topbar .brand{
+    font-family:var(--serif);text-transform:uppercase;letter-spacing:.09em;
+    font-size:.74rem;color:var(--charcoal);text-decoration:none;font-weight:600;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
+  }
+  @media(min-width:420px){ .topbar .brand{font-size:.85rem;letter-spacing:.12em;} }
+  @media(min-width:760px){ .topbar .brand{font-size:.95rem;letter-spacing:.14em;} }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-block;
+    font-family:var(--serif);
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.95rem;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+    padding:15px 38px;
+    background:var(--charcoal);
+    color:var(--cream);
+    border:1px solid var(--charcoal);
+    border-radius:2px;
+    transition:background .2s ease,color .2s ease,border-color .2s ease;
+  }
+  .btn:hover,.btn:focus-visible{background:var(--taupe);border-color:var(--taupe);color:#fff;}
+  .btn--sm{padding:9px 20px;font-size:.8rem;letter-spacing:.14em;}
+  .btn--ghost{background:transparent;color:var(--charcoal);}
+  .btn--ghost:hover{background:var(--charcoal);color:var(--cream);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    text-align:center;
+    padding:46px 22px 62px;
+    background:
+      radial-gradient(circle at 50% 30%, #f8f3ec 0%, var(--cream) 60%);
+  }
+  .hero .logo{width:min(78vw,340px);height:auto;margin:0 auto 6px;display:block;}
+  .hero .tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--charcoal);
+    margin:6px auto 30px;
+    max-width:24ch;
+  }
+  @media(min-width:760px){
+    .hero{padding:70px 22px 90px;}
+    .hero .tagline{font-size:1.6rem;}
+  }
+
+  /* ---------- Services ---------- */
+  .services-grid{display:grid;gap:26px;margin-top:16px;}
+  @media(min-width:820px){ .services-grid{grid-template-columns:1fr 1fr;} }
+  .card{
+    background:var(--cream-card);
+    border:1px solid rgba(154,138,120,.4);
+    border-radius:3px;
+    padding:28px 26px;
+  }
+  .card h3{font-size:1.4rem;margin-bottom:4px;}
+  .card .meta{
+    font-family:var(--sans);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    color:var(--taupe-deep);
+    margin-bottom:14px;
+  }
+  .card p{margin:0 0 18px;font-size:.98rem;}
+  .price-list{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid rgba(154,138,120,.35);}
+  .price-list li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:7px 0;
+    font-size:.95rem;
+  }
+  .price-list .dur{color:var(--body);}
+  .price-list .amt{font-family:var(--serif);font-size:1.15rem;color:var(--charcoal);letter-spacing:.03em;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;}
+  .price-single{
+    padding-top:16px;border-top:1px solid rgba(154,138,120,.35);
+    font-family:var(--serif);font-size:1.2rem;color:var(--charcoal);letter-spacing:.03em;
+    font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;
+  }
+
+  /* ---------- About ---------- */
+  .about{text-align:center;}
+  .about .bio{
+    font-size:1.05rem;
+    color:var(--body);
+  }
+  .bio-placeholder{
+    font-style:italic;
+    color:var(--taupe);
+    border:1px dashed var(--taupe-light);
+    border-radius:3px;
+    padding:22px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;gap:34px;margin-top:8px;}
+  @media(min-width:820px){ .contact-grid{grid-template-columns:1fr 1fr;align-items:start;} }
+  .contact h3{
+    font-size:1rem;letter-spacing:.14em;margin-bottom:10px;color:var(--taupe-deep);
+  }
+  .contact-block{margin-bottom:26px;}
+  .contact-block a{color:var(--charcoal);text-decoration:none;border-bottom:1px solid rgba(154,138,120,.5);}
+  .contact-block a:hover{border-color:var(--charcoal);}
+  .contact .phone{
+    font-family:var(--serif);font-size:1.5rem;letter-spacing:.04em;border:none;
+    font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;
+  }
+  address{font-style:normal;line-height:1.6;}
+
+  table.hours{width:100%;border-collapse:collapse;font-size:.95rem;max-width:340px;}
+  table.hours th{text-align:left;font-weight:400;color:var(--charcoal);padding:6px 0;}
+  table.hours td{text-align:right;padding:6px 0;color:var(--body);}
+  table.hours tr+tr th,table.hours tr+tr td{border-top:1px solid rgba(154,138,120,.28);}
+  table.hours .closed{color:var(--taupe);}
+  table.hours tr.today th,table.hours tr.today td{font-weight:700;color:var(--charcoal);}
+
+  .map-embed{
+    width:100%;
+    aspect-ratio:4/3;
+    border:1px solid rgba(154,138,120,.4);
+    border-radius:3px;
+    filter:grayscale(.15);
+  }
+  .contact-cta{margin-top:12px;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--charcoal);
+    color:#d9d2c8;
+    text-align:center;
+    padding:44px 22px;
+  }
+  footer .fname{
+    font-family:var(--serif);
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    color:#f4eee7;
+    font-size:1.05rem;
+  }
+  footer .frule{width:50px;border-top:1px solid rgba(255,255,255,.25);margin:14px auto;}
+  footer p{margin:5px 0;font-size:.85rem;}
+  footer a{color:#e7e0d6;}
+
+  :focus-visible{outline:2px solid var(--taupe);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">Silver Linings Massage</a>
+  <a class="btn btn--sm" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book Now</a>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <svg class="logo" viewBox="0 0 440 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silver Linings Massage">
+    <g fill="none" stroke="#9a8a78">
+      <circle cx="220" cy="220" r="205" stroke-width="1.6"/>
+      <circle cx="220" cy="220" r="192" stroke-width="0.9"/>
+    </g>
+
+    <g fill="#2f333b" font-family="Cormorant Garamond, Georgia, serif" text-anchor="middle" font-weight="500">
+      <text x="222" y="161" letter-spacing="3">
+        <tspan font-size="53">S</tspan><tspan font-size="39">ILVER</tspan>
+      </text>
+      <text x="222" y="210" letter-spacing="3">
+        <tspan font-size="53">L</tspan><tspan font-size="39">ININGS</tspan>
+      </text>
+      <text x="222" y="259" letter-spacing="3">
+        <tspan font-size="53">M</tspan><tspan font-size="39">ASSAGE</tspan>
+      </text>
+    </g>
+
+    <!-- divider with diamond -->
+    <g stroke="#9a8a78" stroke-width="1.1">
+      <line x1="120" y1="291" x2="320" y2="291"/>
+    </g>
+    <rect x="214" y="285" width="12" height="12" fill="#9a8a78" transform="rotate(45 220 291)"/>
+
+    <!-- subtitle -->
+    <text x="222" y="330" text-anchor="middle" fill="#2f333b"
+          font-family="Cormorant Garamond, Georgia, serif" font-weight="500" letter-spacing="1.5">
+      <tspan font-size="23">M</tspan><tspan font-size="17.5">ASSAGE </tspan><tspan font-size="23">T</tspan><tspan font-size="17.5">HERAPY</tspan>
+    </text>
+
+    <!-- botanical sprigs flanking subtitle -->
+    <g fill="#9a8a78">
+      <g transform="translate(62,330)">
+        <path d="M2,0 C 14,-3 27,-8 39,-17" fill="none" stroke="#9a8a78" stroke-width="1.3"/>
+        <ellipse cx="8"  cy="-3"  rx="5"   ry="2.3" transform="rotate(-24 8 -3)"/>
+        <ellipse cx="17" cy="-6"  rx="5.4" ry="2.5" transform="rotate(-30 17 -6)"/>
+        <ellipse cx="26" cy="-10" rx="5.4" ry="2.5" transform="rotate(-36 26 -10)"/>
+        <ellipse cx="34" cy="-15" rx="4.6" ry="2.2" transform="rotate(-44 34 -15)"/>
+        <ellipse cx="12" cy="1"   rx="4.4" ry="2.1" transform="rotate(18 12 1)"/>
+        <ellipse cx="21" cy="-1"  rx="4.8" ry="2.3" transform="rotate(12 21 -1)"/>
+        <ellipse cx="29" cy="-5"  rx="4.2" ry="2"   transform="rotate(6 29 -5)"/>
+      </g>
+      <g transform="translate(382,330) scale(-1,1)">
+        <path d="M2,0 C 14,-3 27,-8 39,-17" fill="none" stroke="#9a8a78" stroke-width="1.3"/>
+        <ellipse cx="8"  cy="-3"  rx="5"   ry="2.3" transform="rotate(-24 8 -3)"/>
+        <ellipse cx="17" cy="-6"  rx="5.4" ry="2.5" transform="rotate(-30 17 -6)"/>
+        <ellipse cx="26" cy="-10" rx="5.4" ry="2.5" transform="rotate(-36 26 -10)"/>
+        <ellipse cx="34" cy="-15" rx="4.6" ry="2.2" transform="rotate(-44 34 -15)"/>
+        <ellipse cx="12" cy="1"   rx="4.4" ry="2.1" transform="rotate(18 12 1)"/>
+        <ellipse cx="21" cy="-1"  rx="4.8" ry="2.3" transform="rotate(12 21 -1)"/>
+        <ellipse cx="29" cy="-5"  rx="4.2" ry="2"   transform="rotate(6 29 -5)"/>
+      </g>
+    </g>
+  </svg>
+
+  <p class="tagline">Personalized massage therapy for real relief.</p>
+
+  <a class="btn" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book Now</a>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="bg-deep">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Services</h2>
+      <div class="rule"><span class="diamond"></span></div>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="card">
+        <h3>Massage Therapy</h3>
+        <p class="meta">Price varies &nbsp;&middot;&nbsp; 60 min and up</p>
+        <p>At Silver Linings Massage, I offer therapeutic massage designed to help you find relief from physical tension and pain caused by stress, poor posture, and everyday life. Whether you are just looking to relax, or find relief from pain or tension, I incorporate different tools and techniques for the best therapeutic outcome. Some of these include trigger point therapy, Graston myofascial scraping, and hot stones. Massage can also help you find relief from headaches, calm the nervous system, improve circulation, help the body relax and recover after a strenuous workout, promote better sleep, and support overall wellbeing. Each session is tailored to your individual needs, creating a supportive environment where your body can heal, reset, and feel its best.</p>
+        <ul class="price-list">
+          <li><span class="dur">60 minutes</span><span class="amt">$90</span></li>
+          <li><span class="dur">90 minutes</span><span class="amt">$120</span></li>
+          <li><span class="dur">120 minutes</span><span class="amt">$160</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Craniosacral Therapy</h3>
+        <p class="meta">45 min &nbsp;&middot;&nbsp; $70</p>
+        <p>Do you ever feel wired but tired? Can't fall asleep at night? Craniosacral therapy is a deeply relaxing, gentle, hands on therapy that uses light touch to release tension in the body's connective tissues, or fascial linings, surrounding the brain and spinal cord, known as the craniosacral system. This gentle, noninvasive therapy is intended to improve the flow of cerebrospinal fluid and restore balance to the central nervous system and enhance the body's natural healing abilities, potentially easing chronic pain, headaches, and stress related issues.</p>
+        <div class="price-single">45 minutes &mdash; $70</div>
+      </article>
+
+    </div>
+
+    <p style="text-align:center;margin-top:34px;">
+      <a class="btn btn--ghost" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book an Appointment</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="about">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <h2>About Liz</h2>
+      <div class="rule"><span class="diamond"></span></div>
+    </div>
+    <h3 style="font-size:1.05rem;letter-spacing:.14em;color:var(--taupe-deep);margin-bottom:16px;">Liz Smith, LMT</h3>
+    <!-- TODO: replace this placeholder with Liz's real bio -->
+    <p class="bio bio-placeholder">Placeholder for bio</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="bg-deep contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Visit &amp; Contact</h2>
+      <div class="rule"><span class="diamond"></span></div>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-block">
+          <h3>Phone</h3>
+          <a class="phone" href="tel:+14025555555">402-555-5555</a>
+        </div>
+
+        <div class="contact-block">
+          <h3>Email</h3>
+          <a href="mailto:Fake@silverliningsmassage.com">Fake@silverliningsmassage.com</a>
+        </div>
+
+        <div class="contact-block">
+          <h3>Location</h3>
+          <address>
+            12025 W Center Rd<br>
+            Omaha, NE 68144<br>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=12025+W+Center+Rd,+Omaha,+NE+68144" target="_blank" rel="noopener">Get directions</a>
+          </address>
+        </div>
+
+        <div class="contact-block">
+          <h3>Hours</h3>
+          <table class="hours">
+            <tbody>
+              <tr data-day="1"><th>Monday</th><td>11:00 am &ndash; 7:30 pm</td></tr>
+              <tr data-day="2"><th>Tuesday</th><td>2:30 pm &ndash; 7:30 pm</td></tr>
+              <tr data-day="3"><th>Wednesday</th><td class="closed">Closed</td></tr>
+              <tr data-day="4"><th>Thursday</th><td>9:00 am &ndash; 1:30 pm</td></tr>
+              <tr data-day="5"><th>Friday</th><td>9:00 am &ndash; 1:30 pm</td></tr>
+              <tr data-day="6"><th>Saturday</th><td>9:00 am &ndash; 12:30 pm</td></tr>
+              <tr data-day="0"><th>Sunday</th><td class="closed">Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="contact-cta">
+          <a class="btn" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book Now</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Map</h3>
+        <iframe
+          class="map-embed"
+          title="Map to Silver Linings Massage, 12025 W Center Rd, Omaha, NE 68144"
+          src="https://www.google.com/maps?q=12025+W+Center+Rd,+Omaha,+NE+68144&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fname">Silver Linings Massage</div>
+  <div class="frule"></div>
+  <p>Liz Smith, LMT &nbsp;&middot;&nbsp; 12025 W Center Rd, Omaha, NE 68144</p>
+  <p><a href="tel:+14025555555">402-555-5555</a> &nbsp;&middot;&nbsp; <a href="mailto:Fake@silverliningsmassage.com">Fake@silverliningsmassage.com</a></p>
+  <p style="margin-top:12px;color:#b3ab9f;">&copy; 2026 Silver Linings Massage</p>
+</footer>
+
+<script>
+  // Highlight today's row in the hours table. Progressive enhancement only.
+  (function(){
+    try{
+      var d = new Date().getDay(); // 0 = Sunday ... 6 = Saturday
+      var row = document.querySelector('table.hours tr[data-day="' + d + '"]');
+      if(row){ row.classList.add('today'); }
+    }catch(e){}
+  })();
+</script>
+
+</body>
+</html>
