@@ -1,0 +1,413 @@
+<title>Silver Linings Launch Plan</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    --ground:#f4eee7;
+    --surface:#fbf8f2;
+    --surface-2:#efe7db;
+    --ink:#2f333b;
+    --body:#524c44;
+    --muted:#8a7c6a;
+    --accent:#8c7b6b;
+    --accent-strong:#6f6151;
+    --rule:rgba(140,123,107,.34);
+    --tag-liz-bg:rgba(140,123,107,.16);
+    --tag-liz-fg:#6a5b49;
+    --tag-you-bg:rgba(47,51,59,.10);
+    --tag-you-fg:#2f333b;
+    --shadow:0 1px 2px rgba(60,50,38,.05), 0 8px 26px -14px rgba(60,50,38,.22);
+
+    --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --text:"Source Serif 4", Georgia, serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#201e1a;
+      --surface:#2a2721;
+      --surface-2:#322e27;
+      --ink:#f1ebe0;
+      --body:#cbc0b0;
+      --muted:#9d8f7c;
+      --accent:#b8aa95;
+      --accent-strong:#cdbfa9;
+      --rule:rgba(184,170,149,.26);
+      --tag-liz-bg:rgba(184,170,149,.18);
+      --tag-liz-fg:#d8cab2;
+      --tag-you-bg:rgba(241,235,224,.12);
+      --tag-you-fg:#eee7da;
+      --shadow:0 1px 2px rgba(0,0,0,.28), 0 10px 30px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#201e1a;
+    --surface:#2a2721;
+    --surface-2:#322e27;
+    --ink:#f1ebe0;
+    --body:#cbc0b0;
+    --muted:#9d8f7c;
+    --accent:#b8aa95;
+    --accent-strong:#cdbfa9;
+    --rule:rgba(184,170,149,.26);
+    --tag-liz-bg:rgba(184,170,149,.18);
+    --tag-liz-fg:#d8cab2;
+    --tag-you-bg:rgba(241,235,224,.12);
+    --tag-you-fg:#eee7da;
+    --shadow:0 1px 2px rgba(0,0,0,.28), 0 10px 30px -16px rgba(0,0,0,.6);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--body);
+    font-family:var(--text);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:660px;
+    margin:0 auto;
+    padding:38px 22px 90px;
+    display:flex;
+    flex-direction:column;
+    gap:38px;
+  }
+  @media (min-width:640px){ .wrap{padding:64px 24px 120px;} }
+
+  a{color:var(--accent-strong);text-underline-offset:2px;text-decoration-thickness:1px;}
+  a:hover{color:var(--ink);}
+  h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:600;line-height:1.15;margin:0;text-wrap:balance;}
+
+  /* ---------- Masthead ---------- */
+  .mast{display:flex;align-items:center;gap:14px;}
+  .mast svg{flex:none;width:46px;height:46px;}
+  .mast .lock{display:flex;flex-direction:column;gap:3px;}
+  .mast .name{
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.15em;
+    font-size:.9rem;font-weight:600;color:var(--ink);
+  }
+  .mast .kicker{
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;
+    font-size:.66rem;color:var(--muted);
+  }
+
+  /* ---------- Intro ---------- */
+  .lede h1{font-size:clamp(2rem,7vw,2.7rem);margin-bottom:14px;letter-spacing:.01em;}
+  .lede p{margin:0 0 14px;}
+  .lede p:last-child{margin-bottom:0;}
+
+  .status{
+    display:flex;gap:13px;
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent);
+    border-radius:7px;
+    padding:15px 17px;
+    font-size:.95rem;
+    box-shadow:var(--shadow);
+  }
+  .status .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;}
+  .status b{color:var(--ink);font-weight:600;}
+
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.15em;
+    font-size:.92rem;font-weight:600;
+    color:var(--ground);background:var(--ink);
+    border:1px solid var(--ink);border-radius:3px;
+    padding:13px 26px;text-decoration:none;
+    transition:background .18s ease,color .18s ease;
+  }
+  .cta:hover{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff;}
+  .cta .u{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:none;opacity:.8;}
+
+  /* ---------- Double rule ---------- */
+  .rule{position:relative;height:4px;margin:2px 0;}
+  .rule::before,.rule::after{content:"";position:absolute;left:0;right:0;border-top:1px solid var(--rule);}
+  .rule::after{top:3px;}
+  .rule span{
+    position:absolute;left:50%;top:2px;width:6px;height:6px;
+    background:var(--accent);transform:translate(-50%,-50%) rotate(45deg);
+  }
+
+  /* ---------- Phases ---------- */
+  .phase{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:10px;
+    padding:22px 20px;
+    box-shadow:var(--shadow);
+  }
+  @media (min-width:640px){ .phase{padding:26px 28px;} }
+  .phase-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 12px;margin-bottom:6px;}
+  .eyebrow{
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;
+    font-size:.66rem;color:var(--muted);
+  }
+  .phase h2{font-size:1.4rem;flex:1 1 100%;}
+  .phase .sub{font-size:.95rem;margin:8px 0 4px;}
+
+  .tag{
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;
+    font-size:.6rem;font-weight:500;
+    padding:3px 8px;border-radius:100px;white-space:nowrap;
+  }
+  .tag.liz{background:var(--tag-liz-bg);color:var(--tag-liz-fg);}
+  .tag.you{background:var(--tag-you-bg);color:var(--tag-you-fg);}
+
+  /* ---------- Checklist ---------- */
+  ul.checks{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+  ul.checks li{margin:0;}
+  ul.checks label{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:9px 8px;border-radius:6px;cursor:pointer;
+    transition:background .14s ease;
+  }
+  ul.checks label:hover{background:var(--surface-2);}
+  ul.checks input{
+    flex:none;appearance:none;-webkit-appearance:none;
+    width:18px;height:18px;margin-top:3px;
+    border:1.5px solid var(--accent);border-radius:4px;
+    background:transparent;cursor:pointer;display:grid;place-content:center;
+    transition:background .14s ease,border-color .14s ease;
+  }
+  ul.checks input::after{
+    content:"";width:10px;height:10px;transform:scale(0);
+    transform-origin:center;transition:transform .14s ease;
+    background:var(--ground);
+    clip-path:polygon(14% 46%,0 60%,40% 100%,100% 22%,86% 8%,38% 66%);
+  }
+  ul.checks input:checked{background:var(--accent-strong);border-color:var(--accent-strong);}
+  ul.checks input:checked::after{transform:scale(1);}
+  ul.checks input:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  ul.checks .txt{flex:1;}
+  ul.checks input:checked ~ .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--rule);}
+  ul.checks .txt b{color:var(--ink);font-weight:600;}
+  ul.checks .txt .note{display:block;font-size:.86rem;color:var(--muted);margin-top:2px;text-decoration:none;}
+  ul.checks input:checked ~ .txt .note{text-decoration:none;}
+
+  code{
+    font-family:var(--mono);font-size:.82em;
+    background:var(--surface-2);padding:1px 5px;border-radius:4px;
+    color:var(--ink);
+  }
+
+  .hours{
+    font-family:var(--mono);font-size:.8rem;line-height:1.9;
+    color:var(--body);margin:8px 0 0;
+    border-top:1px solid var(--rule);padding-top:8px;
+  }
+  .hours span{display:inline-block;min-width:104px;color:var(--muted);}
+
+  /* ---------- Appendix ---------- */
+  .appendix{font-size:.95rem;}
+  .appendix h2{font-size:1.3rem;margin-bottom:12px;}
+  .appendix ol{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:7px;}
+  .appendix li::marker{color:var(--accent);font-family:var(--mono);font-size:.85em;}
+
+  footer{
+    text-align:center;font-family:var(--mono);font-size:.66rem;
+    text-transform:uppercase;letter-spacing:.18em;color:var(--muted);
+  }
+
+  .progress{
+    font-family:var(--mono);font-size:.66rem;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--muted);text-align:right;
+  }
+  .progress b{color:var(--accent-strong);}
+
+  @media (prefers-reduced-motion:no-preference){
+    .phase,.lede,.status,.cta,.mast{animation:rise .5s ease both;}
+    .lede{animation-delay:.03s;} .status{animation-delay:.08s;} .cta{animation-delay:.12s;}
+    @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+      <circle cx="50" cy="50" r="39" fill="none" stroke="var(--accent)" stroke-width="0.9"/>
+      <path d="M50 30 q9 12 0 24 q-9 -12 0 -24z" fill="var(--accent)"/>
+      <path d="M35 62 q15 6 30 0" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+    </svg>
+    <span class="lock">
+      <span class="name">Silver Linings Massage</span>
+      <span class="kicker">Website &middot; Launch Plan</span>
+    </span>
+  </header>
+
+  <section class="lede">
+    <h1>Getting the site live</h1>
+    <p>The website is built and already online at a private preview address &mdash; search engines can&rsquo;t find it yet. This is everything left to do before it becomes the real public site, and who handles each part.</p>
+    <p>Two people are involved: <span class="tag liz">Liz</span> supplies the real words and makes a few calls, and <span class="tag you">You</span> &mdash; whoever manages the site files &mdash; makes the edits and publishes.</p>
+  </section>
+
+  <div class="status">
+    <span class="dot"></span>
+    <p style="margin:0;"><b>Where things stand:</b> design and layout are final. The bio is a placeholder, and the phone, email, and address on the page are stand-ins. Nothing is public yet.</p>
+  </div>
+
+  <a class="cta" href="https://rpz2727.github.io/silver-linings/" target="_blank" rel="noopener">
+    Open the preview
+    <span class="u">rpz2727.github.io/silver-linings</span>
+  </a>
+
+  <div class="rule"><span></span></div>
+
+  <section class="phase">
+    <div class="phase-head">
+      <span class="eyebrow">Phase 1</span>
+      <span class="tag liz">Liz</span>
+      <h2>Look over the preview</h2>
+    </div>
+    <p class="sub">Open the preview link above on your phone and on a computer. Check that everything reads the way you want it to.</p>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="txt">Business name, tagline, and logo look right<span class="note">Tagline currently reads &ldquo;Personalized massage therapy for real relief.&rdquo;</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Service prices are current<span class="note">Massage $90 / $120 / $160 for 60 / 90 / 120 min &bull; Craniosacral $70 for 45 min</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Hours are current
+        <span class="note">Confirm each line:</span>
+        <span class="hours">
+          <span>Monday</span>11:00am &ndash; 7:30pm<br>
+          <span>Tuesday</span>2:30pm &ndash; 7:30pm<br>
+          <span>Wednesday</span>Closed<br>
+          <span>Thursday</span>9:00am &ndash; 1:30pm<br>
+          <span>Friday</span>9:00am &ndash; 1:30pm<br>
+          <span>Saturday</span>9:00am &ndash; 12:30pm<br>
+          <span>Sunday</span>Closed
+        </span>
+      </span></label></li>
+      <li><label><input type="checkbox"><span class="txt">The &ldquo;Book Now&rdquo; buttons open the right Square page<span class="note">silverliningsmassage.square.site</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Write down anything to change &mdash; wording, section order, anything missing</span></label></li>
+    </ul>
+  </section>
+
+  <section class="phase">
+    <div class="phase-head">
+      <span class="eyebrow">Phase 2</span>
+      <span class="tag liz">Liz</span>
+      <h2>Hand over the real content</h2>
+    </div>
+    <p class="sub">This is the main conversation. Nothing goes public until these are in hand.</p>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="txt"><b>Your bio</b> &mdash; one to three short paragraphs<span class="note">Your license and training, how you work, and what a session with you is like. This replaces the &ldquo;Placeholder for bio&rdquo; box.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>The phone number</b> to publish<span class="note">The site shows a stand-in number right now.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>The email address</b> for the contact section</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>The exact address</b>, including suite number, written how you want it shown</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">How you want to be credited<span class="note">Currently &ldquo;Liz Smith, LMT&rdquo; &mdash; a placeholder. Confirm the real name and title.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>A photo</b> &mdash; optional<span class="note">A headshot or a photo of the treatment room, if you&rsquo;d like one on the page. Send the original file, not a screenshot.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Reviews</b> &mdash; optional<span class="note">If you want a reviews section, send 2&ndash;4 short client quotes. Each client has to give you clear permission first &mdash; a text or email saying yes is enough. Only quotes you have permission for can go on the site.</span></span></label></li>
+    </ul>
+  </section>
+
+  <section class="phase">
+    <div class="phase-head">
+      <span class="eyebrow">Phase 3</span>
+      <span class="tag you">You</span>
+      <h2>Put the real content in</h2>
+    </div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="txt">Edit <code>index.html</code>: paste in the bio and the real phone, email, and address</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Add the photo and the reviews section, if Liz provided them</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Preview locally, then <code>git commit</code> and <code>git push</code><span class="note">The preview link updates about a minute after each push.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Send Liz the updated preview for a final look</span></label></li>
+    </ul>
+  </section>
+
+  <section class="phase">
+    <div class="phase-head">
+      <span class="eyebrow">Phase 4</span>
+      <span class="tag you">You</span><span class="tag liz">Liz signs off</span>
+      <h2>Go live</h2>
+    </div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="txt">Get Liz&rsquo;s clear &ldquo;yes, publish it&rdquo;</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Remove the <code>noindex</code> line from <code>index.html</code><span class="note">It&rsquo;s marked with a &ldquo;DRAFT&rdquo; comment. Removing it lets Google list the site.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><code>git commit</code> and <code>git push</code></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Open the live site once more on a phone and check every link</span></label></li>
+    </ul>
+  </section>
+
+  <section class="phase">
+    <div class="phase-head">
+      <span class="eyebrow">Phase 5</span>
+      <span class="tag you">You</span>
+      <h2>Custom web address &mdash; optional</h2>
+    </div>
+    <p class="sub">Decide the address people will type and see in print.</p>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="txt">Keep the free address<span class="note">rpz2727.github.io/silver-linings &mdash; works today, nothing to buy or maintain.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Or set up a custom domain<span class="note">Something like silverliningsmassage.com &mdash; cleaner on cards and by word of mouth, roughly $12&ndash;15 a year. Buy the domain, add it in the repo&rsquo;s Pages settings, point the DNS at GitHub, then turn on &ldquo;Enforce HTTPS.&rdquo;</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Not sure? Ask for a walkthrough &mdash; this one is quick to do together when you&rsquo;re ready.</span></label></li>
+    </ul>
+  </section>
+
+  <section class="phase">
+    <div class="phase-head">
+      <span class="eyebrow">Phase 6</span>
+      <span class="tag liz">Liz</span><span class="tag you">You</span>
+      <h2>Send people to it</h2>
+    </div>
+    <ul class="checks">
+      <li><label><input type="checkbox"><span class="txt">Add the link to the Square booking profile, Instagram and Facebook, and your email signature</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Put it on the business cards at the next reprint</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>Google Business Profile</b><span class="note">This matters most for a local practice. Make sure the listing exists, is claimed, and links to the new site.</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">Start asking happy clients for a Google review</span></label></li>
+    </ul>
+  </section>
+
+  <div class="rule"><span></span></div>
+
+  <section class="phase appendix">
+    <h2>Making changes later</h2>
+    <p style="margin-top:0;">Everything on the site is one file: <code>index.html</code> in the <code>silver-linings</code> repository.</p>
+    <ol>
+      <li>Edit the file &mdash; all the text and prices live right in it.</li>
+      <li>From that folder, run <code>git commit -am "what changed"</code> then <code>git push</code>.</li>
+      <li>The live site updates in about a minute.</li>
+    </ol>
+    <p style="margin-bottom:0;">Repo: <a href="https://github.com/rpz2727/silver-linings" target="_blank" rel="noopener">github.com/rpz2727/silver-linings</a></p>
+  </section>
+
+  <p class="progress" id="progress" hidden></p>
+
+  <footer>Silver Linings Massage &mdash; internal launch plan</footer>
+
+</div>
+
+<script>
+  (function(){
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('ul.checks input[type=checkbox]'));
+    boxes.forEach(function(b,i){ b.id = b.id || ('chk-'+i); });
+    var KEY = 'sl-launch-plan-v1';
+    var saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ saved = {}; }
+
+    var prog = document.getElementById('progress');
+    function render(){
+      var done = boxes.filter(function(b){ return b.checked; }).length;
+      if(prog){
+        prog.hidden = false;
+        prog.innerHTML = '<b>' + done + '</b> / ' + boxes.length + ' done';
+      }
+    }
+    function save(){
+      var out = {};
+      boxes.forEach(function(b){ if(b.checked) out[b.id] = 1; });
+      try{ localStorage.setItem(KEY, JSON.stringify(out)); }catch(e){}
+    }
+    boxes.forEach(function(b){
+      if(saved[b.id]) b.checked = true;
+      b.addEventListener('change', function(){ save(); render(); });
+    });
+    render();
+  })();
+</script>
