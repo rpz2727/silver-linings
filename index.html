@@ -3,316 +3,452 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- DRAFT: remove this line before going live so search engines can index the site -->
+<script>
+// Apply a saved manual theme choice before first paint, so there's no flash
+// of the wrong theme. If nothing is saved, the CSS media query below
+// handles system-preference dark mode with zero JS and zero flash risk.
+(function(){
+  try{
+    var t = localStorage.getItem('sl-theme');
+    if(t === 'light' || t === 'dark'){
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  }catch(e){}
+})();
+</script>
 <meta name="robots" content="noindex, nofollow">
-<title>Silver Linings Massage | Omaha, NE</title>
-<meta name="description" content="Silver Linings Massage — personalized therapeutic massage and craniosacral therapy with Elizabeth Waldner, LMT, in Omaha, Nebraska.">
-<meta name="theme-color" content="#f4eee7">
+<meta name="color-scheme" content="light dark">
+<title>Silver Linings Massage | Massage Therapy in Omaha, NE</title>
+<meta name="description" content="Silver Linings Massage offers massage therapy and craniosacral therapy with Elizabeth Waldner, LMT, in Omaha, NE.">
+<meta name="keywords" content="massage therapy, craniosacral therapy, Omaha NE massage, Elizabeth Waldner LMT">
+<meta name="theme-color" content="#f5eee8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#262e38" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://silverliningsmassage.com/">
 
-<!-- Open Graph -->
 <meta property="og:title" content="Silver Linings Massage">
-<meta property="og:description" content="Personalized massage therapy for real relief. Omaha, NE.">
+<meta property="og:description" content="Silver Linings Massage offers massage therapy and craniosacral therapy with Elizabeth Waldner, LMT, in Omaha, NE.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://silverliningsmassage.square.site/">
+<meta property="og:url" content="https://silverliningsmassage.com/">
 
-<!-- Favicon: the logo ring mark, inline so the file stays self-contained -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4eee7'/%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%239a8a78' stroke-width='1.4'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%239a8a78' stroke-width='0.8'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-size='13' fill='%232f333b'%3ESL%3C/text%3E%3C/svg%3E">
+<!-- Favicon: SL circle, filled charcoal -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23262E38'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Georgia,serif' font-size='15' fill='%23F5EEE8'%3ESL%3C/text%3E%3C/svg%3E">
 
-<!-- Optional web font for headings; degrades to Georgia/serif offline -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Silver Linings Massage",
+  "url": "https://silverliningsmassage.com/",
+  "telephone": "+14029492544",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "11414 W Center Rd, Ste 325",
+    "addressLocality": "Omaha",
+    "addressRegion": "NE",
+    "postalCode": "68144",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.2346281,
+    "longitude": -96.0918173
+  },
+  "hasMap": "https://maps.google.com/?cid=2959986042355838625",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Monday", "opens": "11:00", "closes": "19:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Tuesday", "opens": "14:30", "closes": "19:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Thursday", "opens": "09:00", "closes": "13:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Friday", "opens": "09:00", "closes": "13:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Saturday", "opens": "09:00", "closes": "12:30" }
+  ]
+}
+</script>
 
 <style>
   :root{
-    --cream:#f4eee7;
-    --cream-deep:#ece3d8;
-    --cream-card:#faf6f1;
-    --charcoal:#2f333b;
-    --taupe:#9a8a78;
-    --taupe-deep:#6f6151;
-    --taupe-light:#b6a894;
-    --body:#4a4a4a;
+    /* ============ Theme-varying tokens: LIGHT (default) ============ */
+    --bg:#F5EEE8;             /* page / hero / about background */
+    --bg-alt:#EDE2D8;         /* services / contact section band */
+    --surface:#F7F0EA;        /* card background */
+    --ink:#262E38;            /* headings, price amounts, phone, wordmark */
+    --body:#262E38;           /* body copy */
+    --link:#6B5C4E;           /* default link, price duration, lockup "MASSAGE" */
+    --muted:#6F604F;          /* labels, meta captions, closed/placeholder text */
+    --contact-link:#6B5C4E;   /* address/get-directions link color */
+    --hairline:#E6DBD0;       /* card border, topbar border, table row rule */
+    --rule-line:#C4B3A2;      /* diamond-rule lines, map border, seal inner ring */
+    --seal-ring-outer:#A4907E;/* seal outer ring (logo artwork) */
+    --seal-caption:#9C8878;   /* seal "Omaha · Nebraska" (logo artwork) */
+    --lockup-rule:#A4907E;    /* header/footer lockup connecting line (logo artwork) */
+    --tagline:#6B5C4E;
+    --ghost-border:#262E38;   /* resting border on ghost buttons */
+    --row-divider:rgba(107,92,78,.2);
+    --link-underline:rgba(107,92,78,.4);
+    --topbar-bg:rgba(245,238,232,.93);
+    --map-filter:grayscale(.18);
+    --footer-bg:#262E38;      /* footer is always a dark "card back" band */
+
+    /* Constants: identical in both themes */
+    --accent:#9C8878;         /* diamond fills, today-dot (logo/decorative) */
+    --footer-link:#B29C86;    /* footer credential line, footer email, copyright */
+    --footer-body:#D8CEC3;    /* footer base text */
+
     --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
-    --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --maxw:960px;
+    --sans:"Jost", "Century Gothic", "Gill Sans", "Futura", system-ui, sans-serif;
+    --maxw:940px;
+    color-scheme: light dark;
   }
 
+  /* ============ Theme-varying tokens: DARK, automatic via system ============ */
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#262E38;
+      --bg-alt:#2E3742;
+      --surface:#2C3641;
+      --ink:#F5EEE8;
+      --body:#D8CEC3;
+      --link:#B29C86;
+      --muted:#B29C86;
+      --contact-link:#D8CEC3;
+      --hairline:#4A5460;
+      --rule-line:#4A5460;
+      --seal-ring-outer:#9C8878;
+      --seal-caption:#A4907E;
+      --lockup-rule:#4A5460;
+      --tagline:#D8CEC3;
+      --ghost-border:#9C8878;
+      --row-divider:rgba(74,84,96,.7);
+      --link-underline:rgba(164,144,126,.4);
+      --topbar-bg:rgba(38,46,56,.92);
+      --map-filter:invert(0.9) hue-rotate(180deg) saturate(0.7) brightness(0.9) contrast(0.92);
+      --footer-bg:#20262E;
+    }
+  }
+
+  /* ============ Theme-varying tokens: DARK, explicit override ============ */
+  :root[data-theme="dark"]{
+    --bg:#262E38;
+    --bg-alt:#2E3742;
+    --surface:#2C3641;
+    --ink:#F5EEE8;
+    --body:#D8CEC3;
+    --link:#B29C86;
+    --muted:#B29C86;
+    --contact-link:#D8CEC3;
+    --hairline:#4A5460;
+    --rule-line:#4A5460;
+    --seal-ring-outer:#9C8878;
+    --seal-caption:#A4907E;
+    --lockup-rule:#4A5460;
+    --tagline:#D8CEC3;
+    --ghost-border:#9C8878;
+    --row-divider:rgba(74,84,96,.7);
+    --link-underline:rgba(164,144,126,.4);
+    --topbar-bg:rgba(38,46,56,.92);
+    --map-filter:invert(0.9) hue-rotate(180deg) saturate(0.7) brightness(0.9) contrast(0.92);
+    --footer-bg:#20262E;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"]{ color-scheme: light; }
+
   *,*::before,*::after{box-sizing:border-box;}
-  html{scroll-behavior:smooth;scroll-padding-top:64px;}
+  html{scroll-behavior:smooth;scroll-padding-top:66px;}
   body{
     margin:0;
-    background:var(--cream);
+    background:var(--bg);
     color:var(--body);
     font-family:var(--sans);
-    font-size:16px;
+    font-weight:400;
+    font-size:15.5px;
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
   }
   img,svg,iframe{max-width:100%;}
-  a{color:var(--charcoal);}
+  p{text-wrap:pretty;}
+
+  a{color:var(--link);text-decoration:none;transition:color .15s ease;}
+  a:hover{color:var(--ink);}
 
   h1,h2,h3{
     font-family:var(--serif);
-    color:var(--charcoal);
+    color:var(--ink);
     font-weight:500;
-    letter-spacing:.06em;
+    letter-spacing:.09em;
     text-transform:uppercase;
-    line-height:1.2;
+    line-height:1.16;
     margin:0;
   }
 
   /* ---------- Layout ---------- */
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
-  section{padding:58px 0;}
-  @media(min-width:760px){ section{padding:90px 0;} }
-  .bg-deep{background:var(--cream-deep);}
-  .narrow{max-width:620px;margin:0 auto;}
+  section{padding:60px 0;}
+  @media(min-width:760px){ section{padding:94px 0;} }
+  .bg-alt{background:var(--bg-alt);}
+  .narrow{max-width:600px;margin:0 auto;}
 
-  /* ---------- Double-line divider ---------- */
+  /* ---------- Diamond rule ---------- */
   .rule{
-    width:64px;height:0;margin:18px auto 30px;
-    border-top:1px solid var(--taupe);
-    position:relative;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:74px;margin:16px auto 30px;
   }
-  .rule::after{
-    content:"";position:absolute;left:0;right:0;top:3px;
-    border-top:1px solid var(--taupe);
-  }
-  .rule .diamond{
-    position:absolute;left:50%;top:1px;width:6px;height:6px;
-    background:var(--taupe);transform:translate(-50%,-50%) rotate(45deg);
-  }
+  .rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--rule-line);}
+  .rule i{width:6px;height:6px;background:var(--accent);transform:rotate(45deg);display:block;}
 
-  .section-head{text-align:center;margin-bottom:8px;}
-  .section-head h2{font-size:1.9rem;}
-  @media(min-width:760px){ .section-head h2{font-size:2.3rem;} }
+  .section-head{text-align:center;margin-bottom:10px;}
+  .section-head h2{font-size:1.95rem;}
+  @media(min-width:760px){ .section-head h2{font-size:2.35rem;} }
 
-  /* ---------- Sticky mini header ---------- */
+  /* ---------- Sticky header ---------- */
   .topbar{
     position:sticky;top:0;z-index:20;
-    display:flex;align-items:center;justify-content:space-between;
-    gap:12px;
-    padding:12px 22px;
-    background:rgba(244,238,231,.92);
-    backdrop-filter:saturate(120%) blur(6px);
-    border-bottom:1px solid rgba(154,138,120,.3);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:10px 22px;
+    background:var(--topbar-bg);
+    backdrop-filter:saturate(115%) blur(6px);
+    border-bottom:1px solid var(--hairline);
   }
-  .topbar .brand{
-    font-family:var(--serif);text-transform:uppercase;letter-spacing:.09em;
-    font-size:.74rem;color:var(--charcoal);text-decoration:none;font-weight:600;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
+  .topbar .brand{display:block;line-height:0;opacity:1;transition:opacity .15s ease;}
+  .topbar .brand:hover{opacity:.8;}
+  .topbar .brand svg{height:38px;width:auto;display:block;}
+  @media(min-width:760px){ .topbar .brand svg{height:46px;} }
+  .topbar-actions{display:flex;align-items:center;gap:10px;flex:none;}
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;flex:none;
+    border:1px solid var(--hairline);background:transparent;color:var(--ink);
+    cursor:pointer;padding:0;border-radius:0;
+    transition:border-color .15s ease;
   }
-  @media(min-width:420px){ .topbar .brand{font-size:.85rem;letter-spacing:.12em;} }
-  @media(min-width:760px){ .topbar .brand{font-size:.95rem;letter-spacing:.14em;} }
+  .theme-toggle:hover,.theme-toggle:focus-visible{border-color:var(--ink);}
+  .theme-toggle svg{width:17px;height:17px;display:block;}
+  .theme-toggle .icon-sun{display:block;}
+  .theme-toggle .icon-moon{display:none;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun{display:none;}
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon{display:block;}
+  }
+  [data-theme="dark"] .theme-toggle .icon-sun{display:none;}
+  [data-theme="dark"] .theme-toggle .icon-moon{display:block;}
+  [data-theme="light"] .theme-toggle .icon-sun{display:block;}
+  [data-theme="light"] .theme-toggle .icon-moon{display:none;}
 
   /* ---------- Buttons ---------- */
   .btn{
     display:inline-block;
-    font-family:var(--serif);
+    font-family:var(--sans);
     text-transform:uppercase;
-    letter-spacing:.16em;
-    font-size:.95rem;
-    font-weight:600;
-    text-decoration:none;
+    letter-spacing:.24em;
+    font-size:.7rem;
+    font-weight:500;
     white-space:nowrap;
-    padding:15px 38px;
-    background:var(--charcoal);
-    color:var(--cream);
-    border:1px solid var(--charcoal);
-    border-radius:2px;
-    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    padding:16px 32px;
+    background:var(--ink);
+    color:var(--bg);
+    border:1px solid var(--ink);
+    transition:background .18s ease,color .18s ease,border-color .18s ease;
   }
-  .btn:hover,.btn:focus-visible{background:var(--taupe);border-color:var(--taupe);color:#fff;}
-  .btn--sm{padding:9px 20px;font-size:.8rem;letter-spacing:.14em;}
-  .btn--ghost{background:transparent;color:var(--charcoal);}
-  .btn--ghost:hover{background:var(--charcoal);color:var(--cream);}
+  .btn:hover,.btn:focus-visible{background:var(--link);border-color:var(--link);color:var(--bg);}
+  .btn--sm{padding:9px 15px;font-size:.58rem;letter-spacing:.18em;}
+  .btn--ghost{background:transparent;color:var(--ink);border-color:var(--ghost-border);}
+  .btn--ghost:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
 
   /* ---------- Hero ---------- */
-  .hero{
-    text-align:center;
-    padding:46px 22px 62px;
-    background:
-      radial-gradient(circle at 50% 30%, #f8f3ec 0%, var(--cream) 60%);
-  }
-  .hero .logo{width:min(78vw,340px);height:auto;margin:0 auto 6px;display:block;}
+  .hero{text-align:center;padding:44px 22px 60px;background:var(--bg);}
+  .hero .seal{width:min(76vw,336px);height:auto;margin:0 auto 4px;display:block;}
   .hero .tagline{
     font-family:var(--serif);
     font-style:italic;
-    font-size:1.3rem;
-    color:var(--charcoal);
-    margin:6px auto 30px;
-    max-width:24ch;
+    font-weight:400;
+    font-size:1.35rem;
+    color:var(--tagline);
+    margin:2px auto 30px;
+    max-width:22ch;
+    line-height:1.4;
   }
   @media(min-width:760px){
-    .hero{padding:70px 22px 90px;}
+    .hero{padding:66px 22px 88px;}
     .hero .tagline{font-size:1.6rem;}
   }
 
   /* ---------- Services ---------- */
-  .services-grid{display:grid;gap:26px;margin-top:16px;}
+  .services-grid{display:grid;gap:24px;margin-top:18px;}
   @media(min-width:820px){ .services-grid{grid-template-columns:1fr 1fr;} }
   .card{
-    background:var(--cream-card);
-    border:1px solid rgba(154,138,120,.4);
-    border-radius:3px;
-    padding:28px 26px;
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    padding:30px 28px;
   }
-  .card h3{font-size:1.4rem;margin-bottom:4px;}
+  .card h3{font-size:1.15rem;letter-spacing:.05em;margin-bottom:8px;}
   .card .meta{
-    font-family:var(--sans);
-    text-transform:uppercase;
-    letter-spacing:.14em;
-    font-size:.72rem;
-    color:var(--taupe-deep);
-    margin-bottom:14px;
+    font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;
+    font-size:.64rem;font-weight:500;color:var(--muted);margin:0 0 16px;
   }
-  .card p{margin:0 0 18px;font-size:.98rem;}
-  .price-list{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid rgba(154,138,120,.35);}
+  .card p{margin:0 0 20px;font-size:.95rem;color:var(--body);}
+  .price-list{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--hairline);}
   .price-list li{
-    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
-    padding:7px 0;
-    font-size:.95rem;
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:7px 0;
   }
-  .price-list .dur{color:var(--body);}
-  .price-list .amt{font-family:var(--serif);font-size:1.15rem;color:var(--charcoal);letter-spacing:.03em;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;}
-  .price-single{
-    padding-top:16px;border-top:1px solid rgba(154,138,120,.35);
-    font-family:var(--serif);font-size:1.2rem;color:var(--charcoal);letter-spacing:.03em;
+  .price-list .dur{font-size:.86rem;letter-spacing:.02em;color:var(--link);}
+  .price-list .amt,.price-single{
+    font-family:var(--serif);color:var(--ink);letter-spacing:.03em;
     font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;
   }
+  .price-list .amt{font-size:1.2rem;}
+  .price-single{padding-top:16px;border-top:1px solid var(--hairline);font-size:1.2rem;}
+
+  .center-cta{text-align:center;margin-top:36px;}
 
   /* ---------- About ---------- */
   .about{text-align:center;}
-  .about .bio{
-    font-size:1.05rem;
-    color:var(--body);
+  .about .signature{
+    font-family:var(--serif);font-size:1.2rem;font-weight:500;
+    color:var(--ink);letter-spacing:.03em;margin:0 0 18px;
   }
+  .about .signature .lmt{letter-spacing:.14em;}
+  .about .bio{font-size:1.03rem;color:var(--body);}
   .bio-placeholder{
-    font-style:italic;
-    color:var(--taupe);
-    border:1px dashed var(--taupe-light);
-    border-radius:3px;
-    padding:22px;
+    font-family:var(--serif);font-style:italic;font-size:1.05rem;
+    color:var(--muted);
+    border:1px solid var(--hairline);
+    padding:24px;
   }
 
   /* ---------- Contact ---------- */
-  .contact-grid{display:grid;gap:34px;margin-top:8px;}
+  .contact-grid{display:grid;gap:36px;margin-top:10px;}
   @media(min-width:820px){ .contact-grid{grid-template-columns:1fr 1fr;align-items:start;} }
   .contact h3{
-    font-size:1rem;letter-spacing:.14em;margin-bottom:10px;color:var(--taupe-deep);
+    font-family:var(--sans);font-weight:500;font-size:.68rem;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 10px;
   }
-  .contact-block{margin-bottom:26px;}
-  .contact-block a{color:var(--charcoal);text-decoration:none;border-bottom:1px solid rgba(154,138,120,.5);}
-  .contact-block a:hover{border-color:var(--charcoal);}
+  .contact-block{margin-bottom:28px;}
+  .contact-block a{color:var(--contact-link);border-bottom:1px solid var(--link-underline);}
+  .contact-block a:hover{color:var(--ink);border-color:var(--ink);}
   .contact .phone{
-    font-family:var(--serif);font-size:1.5rem;letter-spacing:.04em;border:none;
+    font-family:var(--serif);font-size:1.55rem;font-weight:500;letter-spacing:.05em;
+    border:none;color:var(--ink);
     font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;
   }
-  address{font-style:normal;line-height:1.6;}
+  address{font-style:normal;line-height:1.7;font-size:.95rem;color:var(--body);}
 
-  table.hours{width:100%;border-collapse:collapse;font-size:.95rem;max-width:340px;}
-  table.hours th{text-align:left;font-weight:400;color:var(--charcoal);padding:6px 0;}
-  table.hours td{text-align:right;padding:6px 0;color:var(--body);}
-  table.hours tr+tr th,table.hours tr+tr td{border-top:1px solid rgba(154,138,120,.28);}
-  table.hours .closed{color:var(--taupe);}
-  table.hours tr.today th,table.hours tr.today td{font-weight:700;color:var(--charcoal);}
+  table.hours{width:100%;border-collapse:collapse;font-size:.9rem;max-width:330px;}
+  table.hours th{text-align:left;font-weight:400;color:var(--ink);padding:7px 0;}
+  table.hours td{
+    text-align:right;padding:7px 0;color:var(--body);
+    font-variant-numeric:tabular-nums;
+  }
+  table.hours tr+tr th,table.hours tr+tr td{border-top:1px solid var(--row-divider);}
+  table.hours .closed{color:var(--muted);}
+  table.hours tr.today th,table.hours tr.today td{font-weight:500;color:var(--ink);}
+  table.hours tr.today th::before{
+    content:"";display:inline-block;width:5px;height:5px;margin-right:8px;
+    background:var(--accent);transform:rotate(45deg);vertical-align:middle;
+  }
 
   .map-embed{
-    width:100%;
-    aspect-ratio:4/3;
-    border:1px solid rgba(154,138,120,.4);
-    border-radius:3px;
-    filter:grayscale(.15);
+    width:100%;aspect-ratio:4/3;
+    border:1px solid var(--rule-line);
+    filter:var(--map-filter);
   }
-  .contact-cta{margin-top:12px;}
+  .contact-cta{margin-top:14px;}
 
   /* ---------- Footer ---------- */
-  footer{
-    background:var(--charcoal);
-    color:#d9d2c8;
-    text-align:center;
-    padding:44px 22px;
+  footer{background:var(--footer-bg);color:var(--footer-body);text-align:center;padding:56px 22px 48px;}
+  footer .flock{width:190px;height:auto;margin:0 auto 22px;display:block;}
+  footer .fname-role{
+    font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--footer-link);margin:0;
   }
-  footer .fname{
-    font-family:var(--serif);
-    text-transform:uppercase;
-    letter-spacing:.2em;
-    color:#f4eee7;
-    font-size:1.05rem;
+  footer .fperson{
+    font-family:var(--serif);font-size:1.1rem;color:#F5EEE8;
+    letter-spacing:.03em;margin:0 0 4px;
   }
-  footer .frule{width:50px;border-top:1px solid rgba(255,255,255,.25);margin:14px auto;}
-  footer p{margin:5px 0;font-size:.85rem;}
-  footer a{color:#e7e0d6;}
+  footer .fperson .lmt{letter-spacing:.14em;}
+  footer .fcontact{
+    font-family:var(--sans);font-size:.8rem;letter-spacing:.04em;line-height:1.95;
+    color:var(--footer-body);margin:20px 0 0;
+  }
+  footer .fcontact .fphone{
+    display:block;font-size:.95rem;letter-spacing:.12em;color:#F5EEE8;
+    font-variant-numeric:lining-nums;
+  }
+  footer .fcontact a{color:var(--footer-link);}
+  footer .fcontact a:hover{color:#F5EEE8;}
+  footer .fdiv{width:44px;height:1px;background:#4A5460;margin:22px auto;}
+  footer .fcopy{
+    font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--footer-link);margin:22px 0 0;
+  }
 
-  :focus-visible{outline:2px solid var(--taupe);outline-offset:2px;}
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease;}
+  .reveal.is-visible{opacity:1;transform:none;}
+
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none!important;}
+    .reveal{opacity:1!important;transform:none!important;}
+  }
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <a class="brand" href="#top">Silver Linings Massage</a>
-  <a class="btn btn--sm" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book Now</a>
+  <a class="brand" href="#top" aria-label="Silver Linings Massage — home">
+    <!-- Ring-free lockup (decorative; the link above already names it) -->
+    <svg viewBox="0 0 264 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <text x="132" y="21" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="19.5" letter-spacing="1.6" fill="var(--ink)">SILVER LININGS</text>
+      <line x1="34" y1="34" x2="230" y2="34" stroke="var(--lockup-rule)" stroke-width="1"/>
+      <rect x="128" y="30" width="8" height="8" fill="var(--accent)" transform="rotate(45 132 34)"/>
+      <text x="132" y="52" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="15" letter-spacing="3.3" fill="var(--link)">MASSAGE</text>
+    </svg>
+  </a>
+  <div class="topbar-actions">
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch between light and dark theme" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="12" y1="2.5" x2="12" y2="5.2"/>
+          <line x1="12" y1="18.8" x2="12" y2="21.5"/>
+          <line x1="2.5" y1="12" x2="5.2" y2="12"/>
+          <line x1="18.8" y1="12" x2="21.5" y2="12"/>
+          <line x1="4.9" y1="4.9" x2="6.85" y2="6.85"/>
+          <line x1="17.15" y1="17.15" x2="19.1" y2="19.1"/>
+          <line x1="4.9" y1="19.1" x2="6.85" y2="17.15"/>
+          <line x1="17.15" y1="6.85" x2="19.1" y2="4.9"/>
+        </g>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
+      </svg>
+    </button>
+    <a class="btn btn--sm" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book Now</a>
+  </div>
 </header>
 
 <a id="top"></a>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <svg class="logo" viewBox="0 0 440 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silver Linings Massage">
-    <g fill="none" stroke="#9a8a78">
-      <circle cx="220" cy="220" r="205" stroke-width="1.6"/>
-      <circle cx="220" cy="220" r="192" stroke-width="0.9"/>
+  <svg class="seal" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silver Linings Massage seal: two concentric rings framing the wordmark, a diamond divider, and Omaha · Nebraska">
+    <circle cx="220" cy="220" r="209" fill="none" stroke="var(--seal-ring-outer)" stroke-width="1.4"/>
+    <circle cx="220" cy="220" r="196" fill="none" stroke="var(--rule-line)" stroke-width="1"/>
+    <g text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" fill="var(--ink)" letter-spacing="2">
+      <text x="221" y="156"><tspan font-size="50">S</tspan><tspan font-size="36">ILVER</tspan></text>
+      <text x="221" y="208"><tspan font-size="50">L</tspan><tspan font-size="36">ININGS</tspan></text>
+      <text x="221" y="260"><tspan font-size="50">M</tspan><tspan font-size="36">ASSAGE</tspan></text>
     </g>
-
-    <g fill="#2f333b" font-family="Cormorant Garamond, Georgia, serif" text-anchor="middle" font-weight="500">
-      <text x="222" y="161" letter-spacing="3">
-        <tspan font-size="53">S</tspan><tspan font-size="39">ILVER</tspan>
-      </text>
-      <text x="222" y="210" letter-spacing="3">
-        <tspan font-size="53">L</tspan><tspan font-size="39">ININGS</tspan>
-      </text>
-      <text x="222" y="259" letter-spacing="3">
-        <tspan font-size="53">M</tspan><tspan font-size="39">ASSAGE</tspan>
-      </text>
-    </g>
-
-    <!-- divider with diamond -->
-    <g stroke="#9a8a78" stroke-width="1.1">
-      <line x1="120" y1="291" x2="320" y2="291"/>
-    </g>
-    <rect x="214" y="285" width="12" height="12" fill="#9a8a78" transform="rotate(45 220 291)"/>
-
-    <!-- subtitle -->
-    <text x="222" y="330" text-anchor="middle" fill="#2f333b"
-          font-family="Cormorant Garamond, Georgia, serif" font-weight="500" letter-spacing="1.5">
-      <tspan font-size="23">M</tspan><tspan font-size="17.5">ASSAGE </tspan><tspan font-size="23">T</tspan><tspan font-size="17.5">HERAPY</tspan>
-    </text>
-
-    <!-- botanical sprigs flanking subtitle -->
-    <g fill="#9a8a78">
-      <g transform="translate(62,330)">
-        <path d="M2,0 C 14,-3 27,-8 39,-17" fill="none" stroke="#9a8a78" stroke-width="1.3"/>
-        <ellipse cx="8"  cy="-3"  rx="5"   ry="2.3" transform="rotate(-24 8 -3)"/>
-        <ellipse cx="17" cy="-6"  rx="5.4" ry="2.5" transform="rotate(-30 17 -6)"/>
-        <ellipse cx="26" cy="-10" rx="5.4" ry="2.5" transform="rotate(-36 26 -10)"/>
-        <ellipse cx="34" cy="-15" rx="4.6" ry="2.2" transform="rotate(-44 34 -15)"/>
-        <ellipse cx="12" cy="1"   rx="4.4" ry="2.1" transform="rotate(18 12 1)"/>
-        <ellipse cx="21" cy="-1"  rx="4.8" ry="2.3" transform="rotate(12 21 -1)"/>
-        <ellipse cx="29" cy="-5"  rx="4.2" ry="2"   transform="rotate(6 29 -5)"/>
-      </g>
-      <g transform="translate(382,330) scale(-1,1)">
-        <path d="M2,0 C 14,-3 27,-8 39,-17" fill="none" stroke="#9a8a78" stroke-width="1.3"/>
-        <ellipse cx="8"  cy="-3"  rx="5"   ry="2.3" transform="rotate(-24 8 -3)"/>
-        <ellipse cx="17" cy="-6"  rx="5.4" ry="2.5" transform="rotate(-30 17 -6)"/>
-        <ellipse cx="26" cy="-10" rx="5.4" ry="2.5" transform="rotate(-36 26 -10)"/>
-        <ellipse cx="34" cy="-15" rx="4.6" ry="2.2" transform="rotate(-44 34 -15)"/>
-        <ellipse cx="12" cy="1"   rx="4.4" ry="2.1" transform="rotate(18 12 1)"/>
-        <ellipse cx="21" cy="-1"  rx="4.8" ry="2.3" transform="rotate(12 21 -1)"/>
-        <ellipse cx="29" cy="-5"  rx="4.2" ry="2"   transform="rotate(6 29 -5)"/>
-      </g>
-    </g>
+    <line x1="66" y1="286" x2="374" y2="286" stroke="var(--rule-line)" stroke-width="1"/>
+    <rect x="214.5" y="280.5" width="11" height="11" fill="var(--accent)" transform="rotate(45 220 286)"/>
+    <text x="217" y="320" text-anchor="middle" font-family="Jost, sans-serif" font-weight="400" font-size="13" letter-spacing="3.1" fill="var(--seal-caption)">OMAHA &#183; NEBRASKA</text>
   </svg>
 
   <p class="tagline">Personalized massage therapy for real relief.</p>
@@ -321,11 +457,11 @@
 </section>
 
 <!-- ============ SERVICES ============ -->
-<section id="services" class="bg-deep">
-  <div class="wrap">
+<section id="services" class="bg-alt">
+  <div class="wrap reveal">
     <div class="section-head">
       <h2>Services</h2>
-      <div class="rule"><span class="diamond"></span></div>
+      <div class="rule"><i></i></div>
     </div>
 
     <div class="services-grid">
@@ -350,38 +486,38 @@
 
     </div>
 
-    <p style="text-align:center;margin-top:34px;">
+    <div class="center-cta">
       <a class="btn btn--ghost" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book an Appointment</a>
-    </p>
+    </div>
   </div>
 </section>
 
 <!-- ============ ABOUT ============ -->
 <section id="about" class="about">
-  <div class="wrap narrow">
+  <div class="wrap narrow reveal">
     <div class="section-head">
       <h2>About Liz</h2>
-      <div class="rule"><span class="diamond"></span></div>
+      <div class="rule"><i></i></div>
     </div>
-    <h3 style="font-size:1.05rem;letter-spacing:.14em;color:var(--taupe-deep);margin-bottom:16px;">Elizabeth Waldner, LMT</h3>
+    <p class="signature">Elizabeth Waldner, <span class="lmt">LMT</span></p>
     <!-- TODO: replace this placeholder with Liz's real bio -->
     <p class="bio bio-placeholder">Placeholder for bio</p>
   </div>
 </section>
 
 <!-- ============ CONTACT ============ -->
-<section id="contact" class="bg-deep contact">
-  <div class="wrap">
+<section id="contact" class="bg-alt contact">
+  <div class="wrap reveal">
     <div class="section-head">
       <h2>Visit &amp; Contact</h2>
-      <div class="rule"><span class="diamond"></span></div>
+      <div class="rule"><i></i></div>
     </div>
 
     <div class="contact-grid">
       <div>
         <div class="contact-block">
           <h3>Phone</h3>
-          <a class="phone" href="tel:+14029492544">402-949-2544</a>
+          <a class="phone" href="tel:+14029492544">402&#183;949&#183;2544</a>
         </div>
 
         <div class="contact-block">
@@ -392,9 +528,11 @@
         <div class="contact-block">
           <h3>Location</h3>
           <address>
-            11414 W Center Rd, Ste 325<br>
-            Omaha, NE 68144<br>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=11414+W+Center+Rd+Ste+325,+Omaha,+NE+68144" target="_blank" rel="noopener">Get directions</a>
+            <a href="https://maps.google.com/?cid=2959986042355838625" target="_blank" rel="noopener">
+              11414 W Center Rd, Ste 325<br>
+              Omaha, NE 68144
+            </a><br>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=41.2346281,-96.0918173" target="_blank" rel="noopener">Get directions</a>
           </address>
         </div>
 
@@ -420,10 +558,11 @@
 
       <div>
         <h3>Map</h3>
+        <!-- TODO: replace with official Google embed (Share -> Embed a map) before launch -->
         <iframe
           class="map-embed"
-          title="Map to Silver Linings Massage, 11414 W Center Rd Ste 325, Omaha, NE 68144"
-          src="https://www.google.com/maps?q=11414+W+Center+Rd+Ste+325,+Omaha,+NE+68144&output=embed"
+          title="Google Map showing the location of Silver Linings Massage at 11414 W Center Rd, Ste 325, Omaha, NE 68144"
+          src="https://www.google.com/maps?q=41.2346281,-96.0918173&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -432,11 +571,24 @@
 </section>
 
 <footer>
-  <div class="fname">Silver Linings Massage</div>
-  <div class="frule"></div>
-  <p>Elizabeth Waldner, LMT &nbsp;&middot;&nbsp; 11414 W Center Rd, Ste 325, Omaha, NE 68144</p>
-  <p><a href="tel:+14029492544">402-949-2544</a> &nbsp;&middot;&nbsp; <a href="mailto:liz@silverliningsmassage.com">liz@silverliningsmassage.com</a></p>
-  <p style="margin-top:12px;color:#b3ab9f;">&copy; 2026 Silver Linings Massage</p>
+  <svg class="flock" viewBox="0 0 264 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silver Linings Massage wordmark on the footer's dark background">
+    <text x="132" y="21" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="19.5" letter-spacing="1.6" fill="#F5EEE8">SILVER LININGS</text>
+    <line x1="34" y1="34" x2="230" y2="34" stroke="#4A5460" stroke-width="1"/>
+    <rect x="128" y="30" width="8" height="8" fill="#9C8878" transform="rotate(45 132 34)"/>
+    <text x="132" y="52" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="15" letter-spacing="3.3" fill="#A4907E">MASSAGE</text>
+  </svg>
+
+  <p class="fperson">Elizabeth Waldner, <span class="lmt">LMT</span></p>
+  <p class="fname-role">Licensed Massage Therapist</p>
+
+  <p class="fcontact">
+    <a class="fphone" href="tel:+14029492544">402&#183;949&#183;2544</a>
+    <a href="mailto:liz@silverliningsmassage.com">liz@silverliningsmassage.com</a><br>
+    11414 W Center Rd, Ste 325 &nbsp;&middot;&nbsp; Omaha, NE 68144
+  </p>
+
+  <div class="fdiv"></div>
+  <p class="fcopy">&copy; 2026 Silver Linings Massage</p>
 </footer>
 
 <script>
@@ -446,6 +598,88 @@
       var d = new Date().getDay(); // 0 = Sunday ... 6 = Saturday
       var row = document.querySelector('table.hours tr[data-day="' + d + '"]');
       if(row){ row.classList.add('today'); }
+    }catch(e){}
+  })();
+
+  // Scroll reveal: fade + slide the major sections up as they enter the viewport.
+  (function(){
+    try{
+      var els = document.querySelectorAll('.reveal');
+      if(!els.length) return;
+      if(!('IntersectionObserver' in window)){
+        els.forEach(function(el){ el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+      els.forEach(function(el){ io.observe(el); });
+    }catch(e){}
+  })();
+
+  // Smooth-scroll internal links; CSS scroll-behavior handles most browsers,
+  // this is the JS fallback for the rest.
+  (function(){
+    try{
+      var supportsSmoothCss = 'scrollBehavior' in document.documentElement.style;
+      document.querySelectorAll('a[href^="#"]').forEach(function(link){
+        link.addEventListener('click', function(e){
+          var id = link.getAttribute('href').slice(1);
+          if(!id) return;
+          var target = document.getElementById(id);
+          if(!target) return;
+          e.preventDefault();
+          if(supportsSmoothCss && 'scrollIntoView' in target){
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            var startY = window.pageYOffset;
+            var targetY = target.getBoundingClientRect().top + startY - 66;
+            var duration = 500, startTime = null;
+            var step = function(ts){
+              if(!startTime) startTime = ts;
+              var progress = Math.min((ts - startTime) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              window.scrollTo(0, startY + (targetY - startY) * eased);
+              if(progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+          if(history.pushState) history.pushState(null, '', '#' + id);
+        });
+      });
+    }catch(e){}
+  })();
+
+  // Manual theme toggle: forces light or dark regardless of system setting,
+  // and remembers the choice. Precedence: saved choice > system preference > light.
+  (function(){
+    try{
+      var KEY = 'sl-theme';
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      if(!btn) return;
+
+      function currentTheme(){
+        var saved = null;
+        try{ saved = localStorage.getItem(KEY); }catch(e){}
+        if(saved === 'light' || saved === 'dark') return saved;
+        if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+        return 'light';
+      }
+
+      btn.setAttribute('aria-pressed', String(currentTheme() === 'dark'));
+
+      btn.addEventListener('click', function(){
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        try{ localStorage.setItem(KEY, next); }catch(e){}
+        root.setAttribute('data-theme', next);
+        btn.setAttribute('aria-pressed', String(next === 'dark'));
+      });
     }catch(e){}
   })();
 </script>
