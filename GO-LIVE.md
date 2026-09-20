@@ -69,6 +69,14 @@ This is the main conversation. Nothing goes public until these are in hand.
       *(marked with a "DRAFT" comment — removing it lets Google list the site)*
 - [ ] `git commit` and `git push`
 - [ ] Open the live site once more on a phone and check every link
+- [ ] **Check what Google reads off the page** — go to
+      <https://search.google.com/test/rich-results>, paste in the live address,
+      and run it. It should find one **Local Business** item with no errors.
+      That block is what feeds Liz's name, address, phone and hours to Google,
+      so it's worth one look. It can only be tested once the site is public —
+      the tool has to be able to fetch the page.
+      *(If the custom domain in Phase 5 is being used, run this again on the
+      final address, since that's the one the page names as its own.)*
 
 ## Phase 5 — Custom web address — optional  · You
 

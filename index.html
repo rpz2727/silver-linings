@@ -46,7 +46,7 @@
   "telephone": "+14029492544",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "11414 W Center Rd, Ste 325",
+    "streetAddress": "11414 W Center Rd Ste 325",
     "addressLocality": "Omaha",
     "addressRegion": "NE",
     "postalCode": "68144",
@@ -186,6 +186,8 @@
 
   /* ---------- Layout ---------- */
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  main{display:block;}
+  main:focus{outline:none;} /* skip-link target; the ring belongs on the link */
   section{padding:60px 0;}
   @media(min-width:760px){ section{padding:94px 0;} }
   .bg-alt{background:var(--bg-alt);}
@@ -263,6 +265,9 @@
   .hero{text-align:center;padding:44px 22px 60px;background:var(--bg);}
   .hero .seal{width:min(76vw,336px);height:auto;margin:0 auto 4px;display:block;}
   .hero .tagline{
+    /* This is the page h1. The shared h1,h2,h3 rule above would make it
+       uppercase and letter-spaced; the three resets below hold the hero's
+       original tagline rendering, which is what ships. */
     font-family:var(--serif);
     font-style:italic;
     font-weight:400;
@@ -271,6 +276,9 @@
     margin:2px auto 30px;
     max-width:22ch;
     line-height:1.4;
+    letter-spacing:normal;
+    text-transform:none;
+    text-wrap:pretty;
   }
   @media(min-width:760px){
     .hero{padding:66px 22px 88px;}
@@ -391,6 +399,16 @@
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease;}
   .reveal.is-visible{opacity:1;transform:none;}
 
+  /* ---------- Skip link ---------- */
+  .skip-link{position:absolute;left:-9999px;top:0;}
+  .skip-link:focus{
+    left:8px;top:8px;z-index:200;
+    padding:10px 14px;
+    background:var(--bg);
+    color:var(--ink);
+    outline:2px solid currentColor;
+  }
+
   :focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -400,6 +418,8 @@
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="topbar">
   <a class="brand" href="#top" aria-label="Silver Linings Massage — home">
@@ -434,6 +454,8 @@
   </div>
 </header>
 
+<main id="main" tabindex="-1">
+
 <a id="top"></a>
 
 <!-- ============ HERO ============ -->
@@ -451,7 +473,7 @@
     <text x="217" y="320" text-anchor="middle" font-family="Jost, sans-serif" font-weight="400" font-size="13" letter-spacing="3.1" fill="var(--seal-caption)">OMAHA &#183; NEBRASKA</text>
   </svg>
 
-  <p class="tagline">Personalized massage therapy for real relief.</p>
+  <h1 class="tagline">Personalized massage therapy for real relief.</h1>
 
   <a class="btn" href="https://silverliningsmassage.square.site/" target="_blank" rel="noopener">Book Now</a>
 </section>
@@ -529,7 +551,7 @@
           <h3>Location</h3>
           <address>
             <a href="https://maps.google.com/?cid=2959986042355838625" target="_blank" rel="noopener">
-              11414 W Center Rd, Ste 325<br>
+              11414 W Center Rd Ste 325<br>
               Omaha, NE 68144
             </a><br>
             <a href="https://www.google.com/maps/dir/?api=1&destination=41.2346281,-96.0918173" target="_blank" rel="noopener">Get directions</a>
@@ -561,7 +583,7 @@
         <!-- TODO: swap for official Share > Embed iframe at launch -->
         <iframe
           class="map-embed"
-          title="Google Map showing the location of Silver Linings Massage at 11414 W Center Rd, Ste 325, Omaha, NE 68144"
+          title="Google Map showing the location of Silver Linings Massage at 11414 W Center Rd Ste 325, Omaha, NE 68144"
           src="https://www.google.com/maps?cid=2959986042355838625&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -569,6 +591,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <svg class="flock" viewBox="0 0 264 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silver Linings Massage wordmark on the footer's dark background">
@@ -584,7 +608,7 @@
   <p class="fcontact">
     <a class="fphone" href="tel:+14029492544">402&#183;949&#183;2544</a>
     <a href="mailto:liz@silverliningsmassage.com">liz@silverliningsmassage.com</a><br>
-    11414 W Center Rd, Ste 325 &nbsp;&middot;&nbsp; Omaha, NE 68144
+    11414 W Center Rd Ste 325 &nbsp;&middot;&nbsp; Omaha, NE 68144
   </p>
 
   <div class="fdiv"></div>
@@ -627,7 +651,7 @@
   (function(){
     try{
       var supportsSmoothCss = 'scrollBehavior' in document.documentElement.style;
-      document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(function(link){
         link.addEventListener('click', function(e){
           var id = link.getAttribute('href').slice(1);
           if(!id) return;
